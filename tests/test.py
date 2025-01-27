@@ -4,7 +4,7 @@ import os
 def connect_to_db():
     try:
         conn = psycopg2.connect(
-            host="localhost", 
+            host="localhost:3306", 
             database="your_database_name", 
             user="root", 
             password="your_strong_password"
