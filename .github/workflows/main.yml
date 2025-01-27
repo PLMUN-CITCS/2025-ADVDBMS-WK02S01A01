@@ -43,8 +43,3 @@ jobs:
               DB_PASS: your_strong_password
             run: |
               python tests/test.py
-    
-          - name: Stop PostgreSQL service
-            run: |
-              docker stop $(docker ps -q --filter ancestor=postgres:13)
-              docker rm $(docker ps -aq --filter ancestor=postgres:13)
