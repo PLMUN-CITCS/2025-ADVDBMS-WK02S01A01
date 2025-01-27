@@ -19,7 +19,7 @@ jobs:
 
       - name: Run grading script
         run: |
-          python your_grading_script.py
+          python tests/test.py
 
       - name: Stop and remove MySQL container
         run: |
