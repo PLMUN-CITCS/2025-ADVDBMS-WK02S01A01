@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  2025advdbmswk02s01e01:
+    image: 2025advdbmswk02s01e01
+    build:
+      context: .
+      dockerfile: ./Dockerfile
