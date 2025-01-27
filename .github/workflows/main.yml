@@ -1,4 +1,4 @@
-name: Grade SQL Scripts
+name: Testing SQL Scripts
 
 on:
   push:
@@ -16,26 +16,3 @@ jobs:
         run: |
           docker build -t my-sql-container .
           docker run -d -p 3306:3306 --name my-sql-container my-sql-container
-
-      - name: Run grading script
-        run: |
-          python your_grading_script.py 
-
-      - name: Generate Autograding-Reporter output
-        uses: github-classroom/autograding-reporter@v1
-        with:
-          # Configure the reporter with your assignment details
-          assignment_name: "Advanced Databases Assignment 1"
-          student_id: ${{ github.actor }} # Get the GitHub username of the student
-          repo_url: ${{ github.repository_url }} 
-
-      - name: Stop and remove MySQL container
-        run: |
-          docker stop my-sql-container
-          docker rm my-sql-container
-
-      - name: Upload artifacts (optional)
-        uses: actions/upload-artifact@v3
-        with:
-          name: grading-results
-          path: autograding-reporter/results.json
