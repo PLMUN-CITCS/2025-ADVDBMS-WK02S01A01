@@ -40,11 +40,10 @@ if __name__ == "__main__":
         exit(1)
 
     # Get student's SQL scripts (assuming they are in the 'sql_scripts' directory)
-    student_scripts_dir = "scripts" 
-    for filename in os.listdir(student_scripts_dir):
+    student_scripts_dir = ["scripts/01_create_tables.sql", "scripts/02_insert_data.sql"] 
+    for filename in student_scripts_dir:
         if filename.endswith(".sql"):
-            script_path = os.path.join(student_scripts_dir, filename)
-            if execute_student_script(conn, script_path):
+            if execute_student_script(conn, filename):
                 print(f"{filename} executed successfully.")
                 # Run tests and generate feedback
                 # ... (Call test functions and print results) ...
