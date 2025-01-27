@@ -4,10 +4,11 @@ import os
 def connect_to_db():
     try:
         conn = psycopg2.connect(
-            host="localhost:3306", 
-            database="your_database_name", 
-            user="root", 
-            password="your_strong_password"
+            host=os.getenv("DB_HOST", "localhost"),
+            port=os.getenv("DB_PORT", "5432"),
+            database=os.getenv("DB_NAME"),
+            user=os.getenv("DB_USER"),
+            password=os.getenv("DB_PASS")
         )
         return conn
     except Exception as e:
