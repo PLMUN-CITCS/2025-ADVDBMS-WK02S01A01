@@ -1,0 +1,1 @@
+INSERT INTO tblStudents (student_id, student_name, student_email, student_phone) VALUES (1, 'John Doe', 'johndoe@gmail.com', '123-456-7890');
