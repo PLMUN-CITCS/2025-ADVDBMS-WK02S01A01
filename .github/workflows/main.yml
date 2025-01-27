@@ -16,3 +16,12 @@ jobs:
         run: |
           docker build -t my-sql-container .
           docker run -d -p 3306:3306 --name my-sql-container my-sql-container
+
+      - name: Run grading script
+        run: |
+          python your_grading_script.py
+
+      - name: Stop and remove MySQL container
+        run: |
+          docker stop my-sql-container
+          docker rm my-sql-container
