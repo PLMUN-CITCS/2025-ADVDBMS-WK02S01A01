@@ -39,7 +39,7 @@ jobs:
         DB_PASS: your_strong_password
       run: |
         python tests/test.py
-    - name: Check if HelloWorld.java exists
+    - name: Check SQL Scripts
       id: check-sql-scripts
       uses: classroom-resources/autograding-command-grader@v1
       with:
