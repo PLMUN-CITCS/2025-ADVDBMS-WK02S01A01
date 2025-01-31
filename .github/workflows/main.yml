@@ -17,7 +17,12 @@ jobs:
           MYSQL_PASSWORD: secured123
           MYSQL_ROOT_PASSWORD: secured123
         ports:
-          - 3306:3306  # Map MariaDB port to the host
+          - 3306:3306  # Map MariaDB port to localhost
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
