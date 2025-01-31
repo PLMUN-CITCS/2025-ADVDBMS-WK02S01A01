@@ -1,13 +1,13 @@
-import psycopg2
+import mysql.connector
 import os
 
 def connect_to_db():
     try:
-        conn = psycopg2.connect(
+        conn = mysql.connector.connect(
             host=os.getenv("DB_HOST", "localhost"),
-            port=os.getenv("DB_PORT", "5432"),
+            port=int(os.getenv("DB_PORT", "3306")),
             database=os.getenv("DB_NAME", "TEST_DB"),
-            user=os.getenv("DB_USER", "postgres"),
+            user=os.getenv("DB_USER", "root"),
             password=os.getenv("DB_PASS", "secured123")
         )
         return conn
@@ -20,21 +20,22 @@ def execute_sql_script(conn, script_path):
         sql_script = file.read()
     try:
         cur = conn.cursor()
-        cur.execute(sql_script)
+        for statement in sql_script.split(";"):  # Split to handle multiple statements
+            if statement.strip():
+                cur.execute(statement)
         conn.commit()
+        cur.close()
+        return True
     except Exception as e:
         print(f"Error executing script: {e}")
         return False
-    return True
 
 def test_table_exists(conn, table_name):
     cur = conn.cursor()
-    cur.execute(f"""
-        SELECT EXISTS (
-            SELECT FROM information_schema.tables WHERE table_name = '{table_name}'
-        );
-    """)
-    return cur.fetchone()[0]
+    cur.execute(f"SHOW TABLES LIKE '{table_name}'")
+    exists = cur.fetchone() is not None
+    cur.close()
+    return exists
 
 def check_student_exists(conn, name, email, phone):
     cur = conn.cursor()
@@ -43,7 +44,9 @@ def check_student_exists(conn, name, email, phone):
         WHERE student_name = %s AND student_email = %s AND student_phone = %s;
     """
     cur.execute(query, (name, email, phone))
-    return cur.fetchone()[0] > 0
+    exists = cur.fetchone()[0] > 0
+    cur.close()
+    return exists
 
 if __name__ == "__main__":
     conn = connect_to_db()
