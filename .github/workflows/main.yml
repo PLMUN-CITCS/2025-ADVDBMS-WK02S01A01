@@ -30,16 +30,13 @@ jobs:
           echo "Waiting for PostgreSQL to be ready..."
           sleep 5
         done
-    - name: Run grading script
+    - name: Check SQL Scripts
       env:
         DB_HOST: localhost
         DB_PORT: 5432
-        DB_NAME: your_database_name
+        DB_NAME: TEST_DB
         DB_USER: postgres
-        DB_PASS: your_strong_password
-      run: |
-        python tests/test.py
-    - name: Check SQL Scripts
+        DB_PASS: secured123
       id: check-sql-scripts
       uses: classroom-resources/autograding-command-grader@v1
       with:
