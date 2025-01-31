@@ -6,9 +6,9 @@ def connect_to_db():
         conn = psycopg2.connect(
             host=os.getenv("DB_HOST", "localhost"),
             port=os.getenv("DB_PORT", "5432"),
-            database=os.getenv("DB_NAME"),
-            user=os.getenv("DB_USER"),
-            password=os.getenv("DB_PASS")
+            database=os.getenv("DB_NAME", "TEST_DB"),
+            user=os.getenv("DB_USER", "postgres"),
+            password=os.getenv("DB_PASS", "secured123")
         )
         return conn
     except Exception as e:
