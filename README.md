@@ -74,4 +74,78 @@ cd <git_cloned_folder>
 ```
 
 ### **Step 3: Complete the Assignment**
-Details of Activity Here
+
+1. Edit `scripts\01_create_tables.sql` and Create a table named `tblStudents` with the following columns:
+   - `student_id` (INT, PRIMARY KEY, AUTO_INCREMENT)
+   - `student_name` (VARCHAR(50))
+   - `student_email` (VARCHAR(50))
+   - `student_phone` (VARCHAR(50))
+  
+2. Follow this syntax format:
+```SQL
+   CREATE TABLE <tableName> (
+      <fieldName> <fieldAttributes>,
+      <fieldName> <fieldAttributes>,
+      <fieldName> <fieldAttributes>,
+      <fieldName> <fieldAttributes>
+   );
+```
+
+3. Edit `scripts\02_insert_data.sql` and insert the following data into the `tblStudents` table:
+   - Student # 01
+      - `student_name`   : "John Doe"
+      - `student_email`  : "johndoe@gmail.com"
+      - `student_phone`  : "123-456-7890"
+   - Student # 02
+      - `student_name`   : "Jane Doe"
+      - `student_email`  : "janedoe@gmail.com"
+      - `student_phone`  : "123-456-7890"
+    
+4. Follow this syntax format:
+```SQL
+   INSERT INTO
+      <tableName> (<fieldName>, <fieldName>, <fieldName>)
+      VALUES
+         ("value1", "value2", "value3"),
+         ("value1", "value2", "value3");
+```
+
+### **Step 4: Push Changes to GitHub**
+Once you've completed your changes, follow these steps to upload your work to your GitHub repository.
+
+1. Check the status of your changes:
+Open the terminal and run:
+
+```bash
+git status
+```
+This command shows any modified or new files.
+
+2. Stage the changes:
+Add all modified files to staging:
+
+```bash
+git add .
+```
+
+3. Commit your changes:
+Write a meaningful commit message:
+
+```bash
+git commit -m "Completed assignment: Created tables and inserted data"
+```
+
+4. Push your changes to GitHub:
+Upload your changes to your remote repository:
+
+```bash
+git push origin main
+```
+
+### **Step 5: Submit Your Repository Link**
+Once your changes have been pushed:
+1. Visit your GitHub repository online.
+2. Copy the repository URL from your browser (e.g., https://github.com/PLMUN-CITCS/your-github-repo-link).
+3. Submit the repository link to your instructor via the Google Classroom Assignment, turn in and Privately Comment:
+   - GitHub Repository URL: `[Your Repo Link]`
+   - GitHub Username: `[Your GitHub Username]`
