@@ -4,11 +4,11 @@ import os
 def connect_to_db():
     try:
         conn = mysql.connector.connect(
-            host=os.getenv("DB_HOST", "localhost"),
-            port=int(os.getenv("DB_PORT", "3306")),
+            host=os.getenv("DB_HOST", "127.0.0.1"),
+            port=int(os.getenv("DB_PORT", "4000")),
             database=os.getenv("DB_NAME", "TEST_DB"),
             user=os.getenv("DB_USER", "root"),
-            password=os.getenv("DB_PASS", "secured123")
+            password=""
         )
         return conn
     except Exception as e:
@@ -63,11 +63,14 @@ if __name__ == "__main__":
                         print("Table 'tblStudents' created successfully.")
                     else:
                         print("Table 'tblStudents' not created.")
+                        exit(1)
                 elif filename == "scripts/02_insert_data.sql":
                     print("Data inserted successfully.")
+                    exit(1)
             else:
                 print(f"Error executing {filename}.")
                 print("Please check the SQL syntax and try again.")
+                exit(1)
 
     # Check if specific students exist
     students_to_check = [
