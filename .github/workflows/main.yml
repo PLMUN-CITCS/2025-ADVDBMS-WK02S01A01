@@ -9,15 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     if: github.actor != 'github-classroom[bot]'
     services:
-      mysql:
-        image: mysql:8  # Use MySQL version 8
+      mariadb:
+        image: mariadb:10.5  # Use MariaDB version 10.5
         env:
           MYSQL_DATABASE: TEST_DB
           MYSQL_USER: root
           MYSQL_PASSWORD: secured123
           MYSQL_ROOT_PASSWORD: secured123
         ports:
-          - 3306:3306  # Map MySQL port to the host
+          - 3306:3306  # Map MariaDB port to the host
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -25,10 +25,10 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install mysql-connector-python
-    - name: Wait for MySQL to be ready
+    - name: Wait for MariaDB to be ready
       run: |
-        until mysqladmin ping -h 127.0.0.1 --silent; do
-          echo "Waiting for MySQL to be ready..."
+        until mysqladmin ping -h "127.0.0.1" --silent; do
+          echo "Waiting for MariaDB to be ready..."
           sleep 5
         done
     - name: Check SQL Scripts
