@@ -26,6 +26,17 @@ jobs:
           echo "Waiting for TiDB to be ready..."
           sleep 5
         done
+    - name: Create TEST_DB Database
+      run: |
+        mysql -h 127.0.0.1 -P 4000 -u root -e "CREATE DATABASE IF NOT EXISTS TEST_DB;"
+      env:
+        DB_HOST: 127.0.0.1
+        DB_PORT: 4000
+        DB_USER: root
+        DB_PASS: ""
+    - name: Verify TiDB Connection
+      run: |
+        mysql -h 127.0.0.1 -P 4000 -u root -D TEST_DB -e "SHOW TABLES;"
     - name: Check SQL Scripts
       env:
         DB_HOST: 127.0.0.1
