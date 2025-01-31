@@ -9,14 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     if: github.actor != 'github-classroom[bot]'
     services:
-          postgres:
-            image: postgres:13  # Use PostgreSQL version 13
-            env:
-              POSTGRES_DB: TEST_DB
-              POSTGRES_USER: postgres
-              POSTGRES_PASSWORD: secured123
-            ports:
-              - 5432:5432  # Map PostgreSQL port to the host
+      postgres:
+        image: postgres:13  # Use PostgreSQL version 13
+        env:
+          POSTGRES_DB: TEST_DB
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: secured123
+        ports:
+          - 5432:5432  # Map PostgreSQL port to the host
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
