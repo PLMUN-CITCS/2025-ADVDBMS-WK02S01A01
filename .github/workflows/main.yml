@@ -29,10 +29,10 @@ jobs:
     - name: Check SQL Scripts
       env:
         DB_HOST: 127.0.0.1
-        DB_PORT: 3306
+        DB_PORT: 4000
         DB_NAME: TEST_DB
         DB_USER: root
-        DB_PASS: secured123
+        DB_PASS: ""
       id: check-sql-scripts
       uses: classroom-resources/autograding-command-grader@v1
       with:
