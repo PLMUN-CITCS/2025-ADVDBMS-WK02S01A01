@@ -1,5 +1,3 @@
-CREATE DATABASE TEST_DB;
-
 /*
     Filename:       01_create_tables.sql
     Purpose:        Create tables for the database
