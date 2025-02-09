@@ -1,6 +1,8 @@
 # 2025-ADVDBMS-WK02S01E01
 Week 02 - Creating Tables and Querying Data from Tables
 
+Laboratory # 02 - Creating Tables and Querying Data from Tables
+
 ## **Instructions**
 
 ### **Step 1.1: Accept the Assignment**
@@ -75,40 +77,85 @@ cd <git_cloned_folder>
 
 ### **Step 3: Complete the Assignment**
 
-1. Edit `scripts\01_create_tables.sql` and Create a table named `tblStudents` with the following columns:
-   - `student_id` (INT, PRIMARY KEY, AUTO_INCREMENT)
-   - `student_name` (VARCHAR(50))
-   - `student_email` (VARCHAR(50))
-   - `student_phone` (VARCHAR(50))
-  
-2. Follow this syntax format:
-```SQL
-   CREATE TABLE <tableName> (
-      <fieldName> <fieldAttributes>,
-      <fieldName> <fieldAttributes>,
-      <fieldName> <fieldAttributes>,
-      <fieldName> <fieldAttributes>
-   );
+# **Laboratory # 02 - Creating Tables and Querying Data from Tables**
+
+**Objectives**
+- Understand Table Creation: Learn how to design and create a SQL table with a primary key and auto-increment functionality.
+- Data Insertion Skills: Gain experience in writing SQL INSERT statements to add records to your table.
+- File Organization: Learn how to organize SQL scripts using a consistent folder structure and file naming conventions.
+- Best Practices: Familiarize yourself with SQL script best practices, such as proper formatting, commenting, and data integrity considerations.
+- Real-world Application: Apply these skills to build a simple, yet effective, database component that can be expanded in larger projects.
+
+**Folder Structure & File Naming Convention**
+Folder Structure
+- Organize your project directory as follows:
+   - SQL_Lab_Project/: Main project folder.
+   - scripts/: Subfolder that contains all SQL scripts.
+```txt
+SQL_Lab_Project/
+└── scripts/
+    ├── 01_create_tables.sql
+    └── 02_insert_data.sql
 ```
 
-3. Edit `scripts\02_insert_data.sql` and insert the following data into the `tblStudents` table:
-   - Student # 01
-      - `student_name`   : "John Doe"
-      - `student_email`  : "johndoe@gmail.com"
-      - `student_phone`  : "123-456-7890"
-   - Student # 02
-      - `student_name`   : "Jane Doe"
-      - `student_email`  : "janedoe@gmail.com"
-      - `student_phone`  : "123-456-7890"
-    
-4. Follow this syntax format:
+**File Naming Conventions**
+- 01_create_tables.sql: The prefix “01_” indicates that this script should be executed first. The filename clearly describes that this file is used for creating tables.
+- 02_insert_data.sql: The prefix “02_” indicates that this script should be executed after the table creation script. The filename clearly shows that this file is used for inserting data.
+
+**Notable Observation:**
+- Using a numbered prefix in filenames not only ensures the correct execution order but also improves clarity when collaborating with others. Consistent naming helps maintain organization and scalability as projects grow.
+
+**SQL Script Best Practices**
+- Comments: Add descriptive comments to explain the purpose of each section or critical lines of code. For example:
 ```SQL
-   INSERT INTO
-      <tableName> (<fieldName>, <fieldName>, <fieldName>)
-      VALUES
-         ("value1", "value2", "value3"),
-         ("value1", "value2", "value3");
+-- This script creates the tblStudents table with basic student details.
 ```
+- Indentation & Formatting: Format your SQL commands for readability. Each field definition should be on its own line, and SQL keywords should be capitalized.
+- Consistency: Stick to a consistent naming convention for tables and columns (e.g., using camelCase or snake_case). Here we use “tblStudents” for the table name.
+- Use of Constraints: Define appropriate constraints like PRIMARY KEY and AUTO_INCREMENT to maintain data integrity.
+- Version Control: Consider using version control (such as Git) to manage changes to your SQL scripts over time.
+
+**Step-by-Step Instructions**
+1. Create the Table
+- Open scripts/01_create_tables.sql in your SQL editor.
+- Write the SQL command to create the table tblStudents:
+```SQL
+-- Creating tblStudents table
+CREATE TABLE tblStudents (
+    student_id INT PRIMARY KEY AUTO_INCREMENT,
+    student_name VARCHAR(50),
+    student_email VARCHAR(50),
+    student_phone VARCHAR(50)
+);
+
+```
+- Save the file. Observation: Notice that the primary key is set on student_id with AUTO_INCREMENT to ensure that each student record is uniquely identifiable and automatically incremented.
+  
+2. Follow this syntax format:
+- Open scripts/02_insert_data.sql in your SQL editor.
+- Insert sample data into tblStudents:
+```SQL
+-- Creating tblStudents table
+-- Inserting data into tblStudents
+INSERT INTO tblStudents (student_name, student_email, student_phone)
+VALUES
+    ('John Doe', 'johndoe@gmail.com', '123-456-7890'),
+    ('Jane Doe', 'janedoe@gmail.com', '123-456-7890');
+
+```
+- Save the file. Observation: The use of a multi-row INSERT statement makes your script efficient and scalable. Ensure that the column names in the INSERT statement match those defined in the table creation script.
+
+3. Execution and Verification
+- Run the 01_create_tables.sql script first to create the table.
+- Run the 02_insert_data.sql script to insert the records.
+- Verify the data insertion: Execute a simple query to check if the records have been inserted correctly:
+```SQL
+SELECT * FROM tblStudents;
+
+```
+
+**Conclusion**
+By completing this exercise, you have practiced creating a table with a primary key and auto-increment, inserting multiple records with a well-formatted INSERT statement, and organizing your work within a structured folder system using clear file naming conventions. These skills are essential for building robust SQL databases and contribute to best practices in coding and project management. As you continue learning, always remember the importance of script organization, clear documentation, and adherence to best practices to ensure your SQL projects are scalable, maintainable, and collaborative.
 
 ### **Step 4: Push Changes to GitHub**
 Once you've completed your changes, follow these steps to upload your work to your GitHub repository.
