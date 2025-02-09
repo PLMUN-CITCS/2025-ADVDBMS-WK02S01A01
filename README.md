@@ -1,4 +1,4 @@
-# 2025-ADVDBMS-WK02S01E01
+# 2025-ADVDBMS-LAB002
 Week 02 - Creating Tables and Querying Data from Tables
 
 Laboratory # 02 - Creating Tables and Querying Data from Tables
